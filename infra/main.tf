@@ -380,7 +380,7 @@ resource "aws_ecs_service" "prefect_service" {
   name            = "prefect-service"
   cluster         = aws_ecs_cluster.prefect_cluster.id
   task_definition = aws_ecs_task_definition.prefect_work_pool_agent.arn
-  desired_count   = 0
+  desired_count   = 1
   launch_type     = "FARGATE"
   network_configuration {
     subnets          = [aws_subnet.private.id]
