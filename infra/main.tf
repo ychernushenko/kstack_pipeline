@@ -223,7 +223,8 @@ resource "aws_iam_policy" "prefect_work_pool_task" {
           "ecs:RunTask",
           "ecs:DescribeTasks",
           "ecs:StopTask",
-          "ecs:RegisterTaskDefinition"
+          "ecs:RegisterTaskDefinition",
+          "iam:PassRole"
         ]
         Resource = "*"
       }
@@ -319,12 +320,13 @@ resource "local_file" "work_pool_template" {
   filename = abspath("${path.module}/work_pool_template.json")
 }
 
-resource "null_resource" "create_prefect_work_pool" {
-  provisioner "local-exec" {
-    command = "prefect work-pool create clouddatastack-ecs-worker-pool --type ecs --base-job-template ${local_file.work_pool_template.filename}"
-  }
-  depends_on = [local_file.work_pool_template]
-}
+# Done manually
+# resource "null_resource" "create_prefect_work_pool" {
+#   provisioner "local-exec" {
+#     command = "prefect work-pool create clouddatastack-ecs-worker-pool --type ecs --base-job-template ${local_file.work_pool_template.filename}"
+#   }
+#   depends_on = [local_file.work_pool_template]
+# }
 
 resource "aws_ecs_task_definition" "prefect_work_pool_agent" {
   family = "prefect-agent-pool-agent-task"
