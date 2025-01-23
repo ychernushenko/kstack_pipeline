@@ -19,7 +19,7 @@ def submit_emr_job(application_id, job_role_arn, code_bucket_path, s3_script_pat
                 'entryPointArguments': [
                     "--input", s3_input_path, "--output", s3_output_path, "--checkpoint_dir", f"{code_bucket_path}/emr/checkpoint/"
                 ],
-                'sparkSubmitParameters': f"--conf spark.archives={s3_dependencies_path}#environment --conf spark.emr-serverless.driverEnv.PYSPARK_DRIVER_PYTHON=./environment/bin/python --conf spark.emr-serverless.driverEnv.PYSPARK_PYTHON=./environment/bin/python --conf spark.emr-serverless.executorEnv.PYSPARK_PYTHON=./environment/bin/python --conf spark.jars=s3://{code_bucket_path}/jars/deequ-2.0.0-spark-3.1.jar --conf spark.local.dir={code_bucket_path}/emr/workdir"
+                'sparkSubmitParameters': f"--conf spark.archives={s3_dependencies_path}#environment --conf spark.emr-serverless.driverEnv.PYSPARK_DRIVER_PYTHON=./environment/bin/python --conf spark.emr-serverless.driverEnv.PYSPARK_PYTHON=./environment/bin/python --conf spark.emr-serverless.executorEnv.PYSPARK_PYTHON=./environment/bin/python --conf spark.jars={code_bucket_path}/jars/deequ-2.0.0-spark-3.1.jar --conf spark.local.dir={code_bucket_path}/emr/workdir"
             }
         },
         configurationOverrides={
