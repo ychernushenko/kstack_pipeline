@@ -186,6 +186,7 @@ resource "aws_ecs_task_definition" "prefect_work_pool_task" {
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
   execution_role_arn       = "arn:aws:iam::${var.account_number}:role/ecs_task_execution_role"
+  task_role_arn            = "arn:aws:iam::${var.account_number}:role/ecs_task_execution_role"
   # TODO task_role_arn, where task itself should have access to
 }
 
@@ -325,7 +326,7 @@ resource "null_resource" "create_prefect_work_pool" {
 }
 
 resource "aws_ecs_task_definition" "prefect_work_pool_agent" {
-  family = "prefect-work-pool-agent-task"
+  family = "prefect-agent-pool-agent-task"
   container_definitions = jsonencode([
     {
       name      = "prefect-container",
