@@ -2,8 +2,11 @@ from prefect import flow, task
 from prefect.logging import get_run_logger
 import boto3
 
-s3_client = boto3.client('s3')
-emr_client = boto3.client('emr-serverless')
+# Specify the AWS region
+region_name = "eu-central-1"
+
+s3_client = boto3.client('s3', region_name=region_name)
+emr_client = boto3.client('emr-serverless', region_name=region_name)
 
 @task
 def submit_emr_job(application_id, job_role_arn, code_bucket_path, s3_script_path, s3_dependencies_path, s3_input_path, s3_output_path):
