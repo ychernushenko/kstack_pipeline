@@ -339,7 +339,7 @@ resource "aws_ecs_task_definition" "prefect_work_pool_agent" {
       environment = [
         {
           name  = "PREFECT_API_KEY",
-          value = aws_secretsmanager_secret_version.prefect_api_key.secret_string
+          value = "${aws_secretsmanager_secret_version.prefect_api_key.secret_string}"
         },
         {
           name  = "PREFECT_API_URL",
@@ -349,8 +349,8 @@ resource "aws_ecs_task_definition" "prefect_work_pool_agent" {
       logConfiguration = {
         logDriver = "awslogs"
         options = {
-          "awslogs-group"         = aws_cloudwatch_log_group.prefect_work_pool_agent_logs.name
-          "awslogs-region"        = var.region
+          "awslogs-group"         = "${aws_cloudwatch_log_group.prefect_work_pool_agent_logs.name}"
+          "awslogs-region"        = "${var.region}"
           "awslogs-stream-prefix" = "ecs"
         }
       }
@@ -364,6 +364,10 @@ resource "aws_ecs_task_definition" "prefect_work_pool_agent" {
   task_role_arn            = aws_iam_role.prefect_work_pool_task.arn
 
   depends_on = [aws_cloudwatch_log_group.prefect_work_pool_agent_logs, null_resource.create_prefect_work_pool]
+}
+
+output "prefect_work_pool_agent_task_definition_arn" {
+  value = aws_ecs_task_definition.prefect_work_pool_agent.arn
 }
 
 resource "aws_secretsmanager_secret" "prefect_api_key" {
