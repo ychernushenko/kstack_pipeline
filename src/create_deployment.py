@@ -6,11 +6,11 @@ def create_deployment(name, work_pool_name, image, build, push):
         name,
         work_pool_name=work_pool_name,
         image=image,
-        job_variables={
+        job_variables = {
             "cluster": "arn:aws:ecs:eu-central-1:742491319596:cluster/prefect-cluster"
-        }
+        },
         build=build,
-        push=push,
+        push=push
     )
 
 if __name__ == "__main__":
