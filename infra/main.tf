@@ -222,7 +222,8 @@ resource "aws_iam_policy" "prefect_work_pool_task" {
           "ecr:BatchGetImage",
           "ecs:RunTask",
           "ecs:DescribeTasks",
-          "ecs:StopTask"
+          "ecs:StopTask",
+          "ecs:RegisterTaskDefinition"
         ]
         Resource = "*"
       }
