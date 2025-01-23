@@ -366,10 +366,6 @@ resource "aws_ecs_task_definition" "prefect_work_pool_agent" {
   depends_on = [aws_cloudwatch_log_group.prefect_work_pool_agent_logs, null_resource.create_prefect_work_pool]
 }
 
-output "prefect_work_pool_agent_task_definition_arn" {
-  value = aws_ecs_task_definition.prefect_work_pool_agent.arn
-}
-
 resource "aws_secretsmanager_secret" "prefect_api_key" {
   name                    = "prefect-api-key"
   recovery_window_in_days = 0 # TODO not for prod
