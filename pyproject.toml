@@ -6,8 +6,8 @@ authors = ["Yuri Chernushenko <y.chernushenko@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
-prefect = "^3.0.3"
+python = "^3.10"
+prefect = "^3.1.13"
 
 [build-system]
 requires = ["poetry-core"]
