@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "ai-consultant"
+version = "0.1.0"
+description = ""
+authors = ["Yuri Chernushenko <y.chernushenko@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+prefect = "^3.0.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
