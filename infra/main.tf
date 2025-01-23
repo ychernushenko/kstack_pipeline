@@ -367,7 +367,8 @@ resource "aws_ecs_task_definition" "prefect_work_pool_agent" {
   execution_role_arn       = aws_iam_role.prefect_work_pool_execution.arn
   task_role_arn            = aws_iam_role.prefect_work_pool_task.arn
 
-  depends_on = [aws_cloudwatch_log_group.prefect_work_pool_agent_logs, null_resource.create_prefect_work_pool]
+  # depends_on = [aws_cloudwatch_log_group.prefect_work_pool_agent_logs, null_resource.create_prefect_work_pool]
+  depends_on = [aws_cloudwatch_log_group.prefect_work_pool_agent_logs]
 }
 
 resource "aws_secretsmanager_secret" "prefect_api_key" {
