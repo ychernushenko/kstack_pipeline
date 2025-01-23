@@ -228,7 +228,8 @@ resource "aws_iam_policy" "prefect_work_pool_task" {
           "ecs:TagResource",
           "ec2:DescribeVpcs",
           "ec2:DescribeSubnets",
-          "iam:PassRole"
+          "iam:PassRole",
+          "s3:*"
         ]
         Resource = "*"
       }
