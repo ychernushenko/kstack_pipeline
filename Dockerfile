@@ -11,7 +11,7 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry install --no-root --only main
 
 # Copy the flow code into the container
-COPY src/flows/prefect_flow.py ./
+COPY ./src/flows/prefect_flow.py /app/
 
 # Set the entry point to run the Prefect flow
 CMD ["poetry", "run", "python", "prefect_flow.py"]
