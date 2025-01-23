@@ -4,8 +4,8 @@ FROM prefecthq/prefect:3-latest
 WORKDIR /app
 
 # Install requirements
-COPY ./requirements.txt /requirements.txt
-RUN pip install -r /requirements.tx
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install -r /app/requirements.txt
 
 # Copy the flow code into the container
 COPY ./src/ /app/
