@@ -1,10 +1,14 @@
 import argparse
+import os
 from logging import Logger
 
 from pyspark import SparkConf
 from pyspark.sql import SparkSession
 from pydeequ.verification import VerificationSuite
 from pydeequ.checks import CheckLevel, Check
+
+# Set the SPARK_VERSION environment variable
+os.environ["SPARK_VERSION"] = "3.1"
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="VErify with PyDeequ")

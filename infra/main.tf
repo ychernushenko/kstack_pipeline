@@ -229,7 +229,6 @@ resource "aws_iam_policy" "prefect_work_pool_task" {
           "ec2:DescribeVpcs",
           "ec2:DescribeSubnets",
           "iam:PassRole",
-          "emr-serverless:*",
           "s3:*"
         ]
         Resource = "*"
