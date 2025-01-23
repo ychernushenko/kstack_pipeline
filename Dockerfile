@@ -1,5 +1,4 @@
-# Use a Python base image
-FROM python:3.10-slim
+FROM prefecthq/prefect:3-latest
 
 # Set the working directory
 WORKDIR /app
