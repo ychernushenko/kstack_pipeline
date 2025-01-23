@@ -9,7 +9,7 @@ RUN pip install --no-cache-dir poetry
 
 # Copy the Poetry files and install dependencies
 COPY pyproject.toml poetry.lock ./
-RUN poetry install --no-root --no-dev
+RUN poetry install --no-root --only main
 
 # Copy the flow code into the container
 COPY src/flows/prefect_flow.py ./
