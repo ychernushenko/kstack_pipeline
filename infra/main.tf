@@ -224,6 +224,7 @@ resource "aws_iam_policy" "prefect_work_pool_task" {
           "ecs:DescribeTasks",
           "ecs:StopTask",
           "ecs:RegisterTaskDefinition",
+          "ec2:DescribeVpcs",
           "iam:PassRole"
         ]
         Resource = "*"
