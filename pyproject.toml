@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ai-consultant"
+name = "kstack"
 version = "0.1.0"
 description = ""
 authors = ["Yuri Chernushenko <y.chernushenko@gmail.com>"]
