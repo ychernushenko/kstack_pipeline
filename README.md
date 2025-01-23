@@ -14,3 +14,6 @@ docker push 742491319596.dkr.ecr.eu-central-1.amazonaws.com/prefect-repository-a
 aws s3 cp ./src/flows/verify.py s3://kstack-chernushenko/src/verify.py
 DOCKER_BUILDKIT=1 docker build --output . .  -f Dockerfile_emr
 aws s3 cp pyspark_emr.tar.gz s3://kstack-chernushenko/src/pyspark_emr.tar.gz
+
+# Get Dependencies
+poetry export -f requirements.txt --output requirements.txt  --without-hashes
