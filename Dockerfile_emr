@@ -8,7 +8,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install \
-    pydeequ \
+    pydeequ==2.0.7 \
     venv-pack==0.2.0
 
 RUN mkdir /output && venv-pack -o /output/pyspark_emr.tar.gz

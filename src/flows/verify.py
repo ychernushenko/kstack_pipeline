@@ -1,3 +1,6 @@
+import os
+os.environ["SPARK_VERSION"] = '3.2'
+
 import argparse
 from logging import Logger
 
@@ -10,18 +13,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="VErify with PyDeequ")
     parser.add_argument("--input_path", "-i", type=str, required=True, help="S3 path for input")
     parser.add_argument("--output_path", required=True, help="S3 path for output")
+    parser.add_argument("--checkpoint_dir", required=True, help="S3 checkpoint path")
     args = parser.parse_args()
 
     conf = (
         SparkConf()
         .set("spark.app.name", "VerifyWithPyDeequ")
-        .set("spark.sql.execution.arrow.pyspark.enabled", "true")
-        .set("spark.storage.memoryFraction", "1")
-        .set("spark.default.parallelism", "100")
-        .set("spark.sql.autoBroadcastJoinThreshold", "20485760")
-        .set("spark.sql.broadcastTimeout", "3600")
-        .set("spark.sql.shuffle.partitions", "8192")
-        .set("spark.python.profile", "true" if args.profile else "false")
     )
 
     spark = SparkSession.Builder().config(conf=conf).getOrCreate()
